@@ -380,6 +380,14 @@ app.get('/api/resources', (req, res) => {
   
   res.json({ success: true, data: resources });
 });
+const path = require('path');
+
+// Serve React frontend
+app.use(express.static(path.join(__dirname, '../frontend/build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+});
 
 // Start server
 app.listen(PORT, () => {
@@ -389,4 +397,5 @@ app.listen(PORT, () => {
   console.log(`🤖 OpenAI: ${openai ? 'ACTIVE' : 'FALLBACK MODE'}`);
   console.log(`\n💡 Test the server: http://localhost:${PORT}/api/test`);
   console.log(`💡 Frontend should connect to: http://localhost:${PORT}\n`);
+
 });
