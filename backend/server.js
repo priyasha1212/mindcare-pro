@@ -381,13 +381,14 @@ app.get('/api/resources', (req, res) => {
   res.json({ success: true, data: resources });
 });
 const path = require('path');
+const buildPath = path.join(__dirname, '../frontend/build');
 
-// Serve React frontend
-app.use(express.static(path.join(__dirname, '../frontend/build')));
+app.use(express.static(buildPath));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(buildPath, 'index.html'));
 });
+
 
 // Start server
 app.listen(PORT, () => {
@@ -399,3 +400,4 @@ app.listen(PORT, () => {
   console.log(`💡 Frontend should connect to: http://localhost:${PORT}\n`);
 
 });
+
