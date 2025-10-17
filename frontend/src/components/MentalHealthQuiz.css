@@ -1,0 +1,23 @@
+.quiz-container {
+  max-width: 600px;
+  width: 100%;
+}
+
+.quiz-card {
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  background-color: #ffffff;
+}
+
+.option-btn {
+  min-width: 120px;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.option-btn:hover {
+  background-color: #0d6efd;
+  color: #fff;
+  transform: scale(1.05);
+}
